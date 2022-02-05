@@ -3,7 +3,7 @@ import { Col, Row } from "react-bootstrap";
 import styled from "styled-components";
 
 const CardBill = styled.h3`
-  background: #0c3c37;
+  background: #13625C;
   opacity: 0.7;
   box-shadow: 0px 16px 24px rgba(0, 0, 0, 0.36);
   padding: 5px;
