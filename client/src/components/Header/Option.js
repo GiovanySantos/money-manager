@@ -11,8 +11,8 @@ const Opt = styled.div`
   border: none;
   transition: 0.4s;
   &:hover {
-    background: #164f4d;
-    box-shadow: 7px 5px 56px -14px #13625c;
+    background: var(--bg-green-darker);
+    box-shadow: 7px 5px 56px -14px var(--bg-green-soft);
   }
 `;
 

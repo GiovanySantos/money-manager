@@ -2,7 +2,7 @@ import { createGlobalStyle, ThemeProvider } from "styled-components";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import "./dash.css";
+import "./globals.scss";
 
 const GlobalStyle = createGlobalStyle`
   *{
@@ -10,18 +10,19 @@ const GlobalStyle = createGlobalStyle`
       width: 5px;
     }
     ::-webkit-scrollbar-track {
-      background: #0A0E0F;
+      background: var(--bg-green-dark);
       border-radius: 10px;
+      margin: 50px;
     }
     ::-webkit-scrollbar-thumb {
-      background: #13625C;
+      background: var(--bg-green-dark);
       border-radius: 10px;
     }
   }
   body {
     box-sizing: border-box;
-    color: #fafafa;
-    background: #0A0E0F;
+    color: var(--bg-white);
+    background: var(--bg-dark);
     font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;

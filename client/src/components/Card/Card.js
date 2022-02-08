@@ -1,4 +1,4 @@
-import { faPlusCircle } from "@fortawesome/free-solid-svg-icons";
+import { faPlus, faPlusCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useRef, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
@@ -6,16 +6,16 @@ import styled from "styled-components";
 import CardBills from "./CardBills";
 import CardHeader from "./CardHeader";
 
-const CardInfo = styled.div`
+const CardContainer = styled.div`
   display: flex;
   justify-content: start;
-  background: #1d262b;
+  background: var(--bg-dark-soft);
   margin-top: 30px;
   width: 500px;
-  max-height: 700px;
+  height: 700px;
   overflow-y: auto;
   padding: 30px 20px 0px 20px;
-  box-shadow: 0px 0px 40px 11px rgba(0, 0, 0, 0.75);
+  border: solid 2px var(--bg-dark-soft);
 `;
 
 const CardTitle = styled.h3`
@@ -43,8 +43,8 @@ const Card = ({ Info }) => {
   }, [Info]);
 
   return (
-    <CardInfo>
-      <Container fluid>
+    <CardContainer>
+      <Container>
         <Row>
           <CardTitle>{Info.month}</CardTitle>
         </Row>
@@ -65,9 +65,9 @@ const Card = ({ Info }) => {
         </Row>
         <CardBills Info={Info} />
         <Row>
-          <Col className='d-flex justify-content-center p-3'>
+          <Col className='d-flex justify-content-center p-4'>
             <FontAwesomeIcon
-              icon={faPlusCircle}
+              icon={faPlus}
               size='3x'
               color={!hovered ? "#fafafa" : "#13625C"}
               cursor='pointer'
@@ -77,7 +77,7 @@ const Card = ({ Info }) => {
           </Col>
         </Row>
       </Container>
-    </CardInfo>
+    </CardContainer>
   );
 };
 

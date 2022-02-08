@@ -1,9 +1,10 @@
 import React from "react";
 import { Col, Row } from "react-bootstrap";
 import styled from "styled-components";
+import ValueField from "../ValueField";
 
 const CardBill = styled.h3`
-  background: #13625C;
+  background: var(--bg-green-soft);
   opacity: 0.7;
   box-shadow: 0px 16px 24px rgba(0, 0, 0, 0.36);
   padding: 5px;
@@ -17,7 +18,7 @@ const CardHeader = ({ available, totalEarns, totalBills }) => {
           <h3>Disponível</h3>
         </Col>
         <Col>
-          <CardBill className='text-center'>$ {available}</CardBill>
+          <ValueField value={available} />
         </Col>
       </Row>
       <Row className='d-flex justify-content-between align-items-center pb-3'>
@@ -25,7 +26,7 @@ const CardHeader = ({ available, totalEarns, totalBills }) => {
           <h3>Ganhos</h3>
         </Col>
         <Col>
-          <CardBill className='text-center'>$ {totalEarns}</CardBill>
+          <ValueField value={totalEarns} />
         </Col>
       </Row>
       <Row className='d-flex justify-content-between align-items-center pb-3'>
@@ -33,7 +34,7 @@ const CardHeader = ({ available, totalEarns, totalBills }) => {
           <h3>Gastos</h3>
         </Col>
         <Col>
-          <CardBill className='text-center'>$ {totalBills}</CardBill>
+          <ValueField value={totalBills} />
         </Col>
       </Row>
     </div>
