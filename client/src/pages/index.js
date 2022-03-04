@@ -3,7 +3,6 @@ import Slider from "react-slick";
 import { format } from "date-fns";
 import { Button, Col, Container, Modal, Row } from "react-bootstrap";
 
-import AllMonths from "../api/getAllMonths.json";
 import Card from "../components/Card/Card";
 import Header from "../components/Header/Header";
 import styled from "styled-components";
@@ -21,6 +20,7 @@ const Home = () => {
   // }, [data]);
 
   useEffect(() => {
+    axios
     setCards(AllMonths.data);
     setCurrentMonth(parseInt(format(new Date(), "M")) - 1);
   }, [cards]);
