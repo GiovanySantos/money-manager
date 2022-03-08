@@ -1,37 +1,56 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
-import Slider from "react-slick";
+import { Container, Modal, Row } from "react-bootstrap";
 import { format } from "date-fns";
-import { Button, Col, Container, Modal, Row } from "react-bootstrap";
-
+import Slider from "react-slick";
 import Card from "../components/Card/Card";
 import Header from "../components/Header/Header";
-import styled from "styled-components";
 import UserModal from "../components/Modals/UserModal";
 import WalletModal from "../components/Modals/WalletModal";
+import { GetServerSideProps } from "next";
 
-const Home = () => {
-  const [currentMonth, setCurrentMonth] = useState();
+interface Earn {
+  earnFrom: String;
+  Value: Number;
+}
+interface Bill {
+  isPinned: Boolean;
+  name: String;
+  value: Number;
+}
+
+interface Month {
+  id: Number;
+  month: String;
+  earns: [Earn];
+  bills: [Bill];
+}
+
+interface IProps {
+  props: Month;
+}
+
+const Home: React.FC<IProps> = (props) => {
+  const [currentMonth, setCurrentMonth] = useState<any>();
   const [cards, setCards] = useState();
   const [showModal, setShowModal] = useState(false);
-  const [selectedModal, setSelectedModal] = useState();
-
-  // useEffect(() => {
-  //   console.log(data);
-  // }, [data]);
-
-  useEffect(() => {
-    axios
-    setCards(AllMonths.data);
-    setCurrentMonth(parseInt(format(new Date(), "M")) - 1);
-  }, [cards]);
+  const [selectedModal, setSelectedModal] = useState<number>();
 
   const handleOpen = () => setShowModal(true);
   const handleClose = () => setShowModal(false);
 
-  const handleOpenModal = (code) => {
+  const handleOpenModal = (code: number) => {
     setSelectedModal(code);
     handleOpen();
   };
+
+  useEffect(() => {
+    setCurrentMonth(parseInt(format(new Date(), "M")) - 1);
+  }, [cards]);
+
+  useEffect(() => {
+    console.log(data);
+  }, [data]);
 
   return (
     <Container fluid className='pt-3'>
@@ -90,11 +109,14 @@ const Home = () => {
   );
 };
 
-// export async function getServerSideProps() {
-//   const res = await fetch(`https://api.spacexdata.com/v4/launches/latest`);
-//   const data = await res.json();
-
-//   return { props: { data } };
-// }
+export const getServerSideProps: GetServerSideProps = async () => {
+  try {
+    const res: any = await axios.get("getAllMonths.json");
+    const data: [Month] = await res.data;
+    return { props: { data } };
+  } catch (error) {
+    return { props: {} };
+  }
+};
 
 export default Home;
