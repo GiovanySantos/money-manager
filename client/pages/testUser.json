@@ -1,0 +1,152 @@
+{
+  "name": "Torrada",
+  "email": "little@toast.com",
+  "password": "torradinha",
+  "myWallet": {
+    "totalEarnings": 0,
+    "earnings": [
+      {
+        "id": 1,
+        "name": "Salário",
+        "value": 3600,
+        "recurrency": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+      },
+      {
+        "id": 2,
+        "name": "Freela X",
+        "value": 1800,
+        "recurrency": [1, 2]
+      },
+      {
+        "id": 3,
+        "name": "Freela Y",
+        "value": 1000,
+        "recurrency": [2, 3]
+      },
+      {
+        "id": 4,
+        "name": "Freela z",
+        "value": 2400,
+        "recurrency": [3]
+      }
+    ]
+  },
+  "months": [
+    {
+      "id": 1,
+      "name": "Janeiro",
+      "avaliableMoney": 0,
+      "totalEarnings": 0,
+      "totalBills": 0,
+      "bills": [
+        {
+          "id": 1,
+          "name": "Cartão Nubank",
+          "value": 1200
+        },
+        {
+          "id": 2,
+          "name": "Pagamento X",
+          "value": 500
+        },
+        {
+          "id": 3,
+          "name": "Pagamento Y",
+          "value": 200
+        },
+        {
+          "id": 4,
+          "name": "Pagamento Z",
+          "value": 900
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Fevereiro",
+      "avaliableMoney": 0,
+      "totalEarnings": 0,
+      "totalBills": 0,
+      "bills": [
+        {
+          "id": 1,
+          "name": "Cartão Nubank",
+          "value": 1200
+        },
+        {
+          "id": 2,
+          "name": "Pagamento X",
+          "value": 500
+        },
+        {
+          "id": 3,
+          "name": "Pagamento Y",
+          "value": 200
+        },
+        {
+          "id": 4,
+          "name": "Pagamento Z",
+          "value": 900
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Março",
+      "avaliableMoney": 0,
+      "totalEarnings": 0,
+      "totalBills": 0,
+      "bills": [
+        {
+          "id": 1,
+          "name": "Cartão Nubank",
+          "value": 1200
+        },
+        {
+          "id": 2,
+          "name": "Pagamento X",
+          "value": 500
+        },
+        {
+          "id": 3,
+          "name": "Pagamento Y",
+          "value": 200
+        },
+        {
+          "id": 4,
+          "name": "Pagamento Z",
+          "value": 900
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Abril",
+      "avaliableMoney": 0,
+      "totalEarnings": 0,
+      "totalBills": 0,
+      "bills": [
+        {
+          "id": 1,
+          "name": "Cartão Nubank",
+          "value": 1200
+        },
+        {
+          "id": 2,
+          "name": "Pagamento X",
+          "value": 500
+        },
+        {
+          "id": 3,
+          "name": "Pagamento Y",
+          "value": 200
+        },
+        {
+          "id": 4,
+          "name": "Pagamento Z",
+          "value": 900
+        }
+      ]
+    }
+  ]
+}
