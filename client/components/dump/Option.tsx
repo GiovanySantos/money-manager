@@ -1,5 +1,6 @@
 import { SvgIconTypeMap } from "@mui/material";
 import { OverridableComponent } from "@mui/material/OverridableComponent";
+import Content from "./Content";
 import React from "react";
 import styled from "styled-components";
 
@@ -20,14 +21,14 @@ const Opt = styled.div`
 
 interface IProps {
   Icon: OverridableComponent<SvgIconTypeMap<{}, "svg">>;
-  OptionText: string;
+  OptionText?: string;
 }
 
 const Option: React.FC<IProps> = ({ Icon, OptionText }) => {
   return (
     <Opt>
-      <Icon fontSize='large' className='pe-2' />
-      <h3 className='fw-bold pt-2'>{OptionText}</h3>
+      <Icon fontSize='large' className={OptionText ? "me-2" : ""} />
+      {OptionText ?? <Content content={OptionText} />}
     </Opt>
   );
 };

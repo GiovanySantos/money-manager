@@ -3,15 +3,15 @@ import styled from "styled-components";
 import { Typography } from "@mui/material";
 
 interface IProps {
-  Content: string;
+  content?: string;
 }
 
 const STypography = styled(Typography)`
   font-family: inherit;
 `;
 
-const TitleContent: React.FC<IProps> = ({ Content }) => {
-  return <STypography variant='h4'>{Content}</STypography>;
+const TitleContent: React.FC<IProps> = ({ content }) => {
+  return <STypography variant='h4'>{content}</STypography>;
 };
 
 export default TitleContent;

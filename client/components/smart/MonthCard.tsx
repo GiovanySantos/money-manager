@@ -2,8 +2,12 @@ import React, { useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import styled from "styled-components";
 import { Month } from "../../interfaces/interfaces";
+import BillComponent from "../dump/Bills";
+import Bills from "../dump/Bills";
 import Content from "../dump/Content";
 import TitleContent from "../dump/TitleContent";
+import Values from "../dump/Values";
+import NewBill from "./NewBill";
 
 interface IProps {
   MonthInfo: Month;
@@ -33,42 +37,31 @@ const MonthCard: React.FC<IProps> = ({ MonthInfo }) => {
     <div>
       <SContainer>
         <Row className='d-flex justify-content-between mb-5'>
-          <TitleContent Content={MonthInfo.name} />
+          <TitleContent content={MonthInfo.name} />
         </Row>
-        <Row>
-          <Col className='d-flex justify-content-between mb-3'>
-            <Content Content='Valor Disponível' />
-            <Content Content={`R$ ${avaliableMoney}`} />
-          </Col>
-        </Row>
-        <Row>
-          <Col className='d-flex justify-content-between mb-3'>
-            <Content Content='Total de Ganhos' />
-            <Content Content={`R$ ${totalEarnings}`} />
-          </Col>
-        </Row>
-        <Row>
-          <Col className='d-flex justify-content-between mb-3'>
-            <Content Content='Total de Despesas' />
-            <Content Content={`R$ ${totalBills}`} />
-          </Col>
-        </Row>
+        <Values
+          avaliableMoney={avaliableMoney}
+          totalEarnings={totalEarnings}
+          totalBills={totalBills}
+        />
         <Row>
           <Col className='d-flex justify-content-between mt-3 mb-3'>
-            <TitleContent Content='Despesa' />
-            <TitleContent Content='Valor' />
+            <TitleContent content='Despesa' />
+            <TitleContent content='Valor' />
           </Col>
         </Row>
         {MonthInfo.bills.map((bill) => {
           return (
             <Row key={bill.id}>
-              <Col className='d-flex justify-content-between mt-3 mb-3'>
-                <Content Content={bill.name} />
-                <Content Content={`R$ ${bill.value}`} />
-              </Col>
+              <BillComponent bill={bill} />
             </Row>
           );
         })}
+        <Row>
+          <Col className='d-flex justify-content-between mt-3 mb-3'>
+            <NewBill month={MonthInfo.name} />
+          </Col>
+        </Row>
       </SContainer>
     </div>
   );

@@ -1,17 +1,15 @@
-import { Button } from "@mui/material";
 import { format } from "date-fns";
 import type { NextPage } from "next";
 import Head from "next/head";
 import { useContext, useEffect, useState } from "react";
 import { Container, Modal, Row } from "react-bootstrap";
-import Slider from "react-slick";
-import { Settings } from "react-slick";
+import Slider, { Settings } from "react-slick";
+import styled from "styled-components";
 import Header from "../components/smart/Header";
 import MonthCard from "../components/smart/MonthCard";
 import ProfileModal from "../components/smart/ProfileModal";
 import { ProfileContext } from "../contexts/ProfileContext";
-import { Month, Profile } from "../interfaces/interfaces";
-import styles from "../styles/Home.module.scss";
+import { Month } from "../interfaces/interfaces";
 import user from "./testUser.json";
 
 // import { GetServerSideProps } from "next";
@@ -19,17 +17,19 @@ import user from "./testUser.json";
 //   user?: Profile;
 // }
 
+const Home = styled.div`
+  height: 100vh;
+`;
+
 const Workspace: NextPage = () => {
-  const [currentMonth, setCurrentMonth] = useState<number>(
-    parseInt(format(new Date(), "M")) - 1
-  );
-  const [showModal, setShowModal] = useState<boolean>(false);
-  const [selectedModal, setSelectedModal] = useState<number>();
+  const [monthsQuantity, setMonthsQuantity] = useState<number>(3);
+  const [showModalComponent, setShowModalComponent] = useState<boolean>(false);
+  const [modalNumber, setModalNumber] = useState<number>(0);
   const { userProfile, setUserProfile } = useContext(ProfileContext);
 
-  const settings: Settings = {
-    initialSlide: 1,
-    slidesToShow: 3,
+  const sliderSettings: Settings = {
+    initialSlide: parseInt(format(new Date(), "M")) - 1,
+    slidesToShow: monthsQuantity,
     dots: false,
     arrows: false,
     swipe: true,
@@ -37,11 +37,12 @@ const Workspace: NextPage = () => {
     accessibility: true,
     centerMode: true,
     draggable: true,
+    adaptiveHeight: true,
     responsive: [
       {
         breakpoint: 1590,
         settings: {
-          slidesToShow: 2,
+          slidesToShow: monthsQuantity < 2 ? monthsQuantity : 2,
         },
       },
       {
@@ -53,12 +54,23 @@ const Workspace: NextPage = () => {
     ],
   };
 
-  const handleOpen = () => setShowModal(true);
-  const handleClose = () => setShowModal(false);
+  const openModelComponent = () => setShowModalComponent(true);
+  const closeModalComponent = () => setShowModalComponent(false);
 
-  const handleOpenModal = (code: number) => {
-    setSelectedModal(code);
-    handleOpen();
+  const incraseMonthsQuantity = () => {
+    if (monthsQuantity < 4) {
+      setMonthsQuantity(monthsQuantity + 1);
+    }
+  };
+  const decraseMonthsQuantity = () => {
+    if (monthsQuantity > 1) {
+      setMonthsQuantity(monthsQuantity - 1);
+    }
+  };
+
+  const selectModal = (code: number) => {
+    setModalNumber(code);
+    openModelComponent();
   };
 
   useEffect(() => {
@@ -67,25 +79,25 @@ const Workspace: NextPage = () => {
   }, [setUserProfile]);
 
   return (
-    <div className={styles.homepage}>
+    <Home>
       <Head>
         <title>Money Manager</title>
-        <link rel='icon' href='/favicon.ico' />
       </Head>
-      <Modal show={showModal} centered={true} onEscapeKeyDown={handleClose}>
-        {selectedModal && selectedModal === 1 ? (
-          <ProfileModal />
-        ) : (
-          <h1>Nothing here yet</h1>
-        )}
+      <Modal
+        show={showModalComponent}
+        centered={true}
+        onEscapeKeyDown={closeModalComponent}>
+        {modalNumber === 1 ? <ProfileModal /> : <h1>Nothing here yet</h1>}
       </Modal>
       <Container fluid className='pt-3'>
         <Row>
           <Header
-            handleOpenModal={handleOpenModal}
             userName={userProfile?.name}
+            selectModal={selectModal}
+            incraseMonthsQuantity={incraseMonthsQuantity}
+            decraseMonthsQuantity={decraseMonthsQuantity}
           />
-          <Slider {...settings}>
+          <Slider {...sliderSettings}>
             {userProfile &&
               userProfile.months.map((month: Month) => {
                 return (
@@ -96,9 +108,9 @@ const Workspace: NextPage = () => {
               })}
           </Slider>
         </Row>
+        <footer>Powered by Torradinha</footer>
       </Container>
-      <footer className={styles.footer}>Powered by Torradinha</footer>
-    </div>
+    </Home>
   );
 };
 

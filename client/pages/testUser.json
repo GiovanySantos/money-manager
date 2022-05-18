@@ -75,17 +75,17 @@
         },
         {
           "id": 2,
-          "name": "Pagamento X",
+          "name": "Pagamento A",
           "value": 500
         },
         {
           "id": 3,
-          "name": "Pagamento Y",
+          "name": "Pagamento B",
           "value": 200
         },
         {
           "id": 4,
-          "name": "Pagamento Z",
+          "name": "Pagamento C",
           "value": 900
         }
       ]
@@ -122,6 +122,238 @@
     {
       "id": 4,
       "name": "Abril",
+      "avaliableMoney": 0,
+      "totalEarnings": 0,
+      "totalBills": 0,
+      "bills": [
+        {
+          "id": 1,
+          "name": "Cartão Nubank",
+          "value": 1200
+        },
+        {
+          "id": 2,
+          "name": "Pagamento X",
+          "value": 500
+        },
+        {
+          "id": 3,
+          "name": "Pagamento Y",
+          "value": 200
+        },
+        {
+          "id": 4,
+          "name": "Pagamento Z",
+          "value": 900
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Maio",
+      "avaliableMoney": 0,
+      "totalEarnings": 0,
+      "totalBills": 0,
+      "bills": [
+        {
+          "id": 1,
+          "name": "Cartão Nubank",
+          "value": 1200
+        },
+        {
+          "id": 2,
+          "name": "Pagamento X",
+          "value": 500
+        },
+        {
+          "id": 3,
+          "name": "Pagamento Y",
+          "value": 200
+        },
+        {
+          "id": 4,
+          "name": "Pagamento Z",
+          "value": 900
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Junho",
+      "avaliableMoney": 0,
+      "totalEarnings": 0,
+      "totalBills": 0,
+      "bills": [
+        {
+          "id": 1,
+          "name": "Cartão Nubank",
+          "value": 1200
+        },
+        {
+          "id": 2,
+          "name": "Pagamento X",
+          "value": 500
+        },
+        {
+          "id": 3,
+          "name": "Pagamento Y",
+          "value": 200
+        },
+        {
+          "id": 4,
+          "name": "Pagamento Z",
+          "value": 900
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Julho",
+      "avaliableMoney": 0,
+      "totalEarnings": 0,
+      "totalBills": 0,
+      "bills": [
+        {
+          "id": 1,
+          "name": "Cartão Nubank",
+          "value": 1200
+        },
+        {
+          "id": 2,
+          "name": "Pagamento X",
+          "value": 500
+        },
+        {
+          "id": 3,
+          "name": "Pagamento Y",
+          "value": 200
+        },
+        {
+          "id": 4,
+          "name": "Pagamento Z",
+          "value": 900
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "name": "Agosto",
+      "avaliableMoney": 0,
+      "totalEarnings": 0,
+      "totalBills": 0,
+      "bills": [
+        {
+          "id": 1,
+          "name": "Cartão Nubank",
+          "value": 1200
+        },
+        {
+          "id": 2,
+          "name": "Pagamento X",
+          "value": 500
+        },
+        {
+          "id": 3,
+          "name": "Pagamento Y",
+          "value": 200
+        },
+        {
+          "id": 4,
+          "name": "Pagamento Z",
+          "value": 900
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "name": "Setembro",
+      "avaliableMoney": 0,
+      "totalEarnings": 0,
+      "totalBills": 0,
+      "bills": [
+        {
+          "id": 1,
+          "name": "Cartão Nubank",
+          "value": 1200
+        },
+        {
+          "id": 2,
+          "name": "Pagamento X",
+          "value": 500
+        },
+        {
+          "id": 3,
+          "name": "Pagamento Y",
+          "value": 200
+        },
+        {
+          "id": 4,
+          "name": "Pagamento Z",
+          "value": 900
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "name": "Outubro",
+      "avaliableMoney": 0,
+      "totalEarnings": 0,
+      "totalBills": 0,
+      "bills": [
+        {
+          "id": 1,
+          "name": "Cartão Nubank",
+          "value": 1200
+        },
+        {
+          "id": 2,
+          "name": "Pagamento X",
+          "value": 500
+        },
+        {
+          "id": 3,
+          "name": "Pagamento Y",
+          "value": 200
+        },
+        {
+          "id": 4,
+          "name": "Pagamento Z",
+          "value": 900
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "name": "Novembro",
+      "avaliableMoney": 0,
+      "totalEarnings": 0,
+      "totalBills": 0,
+      "bills": [
+        {
+          "id": 1,
+          "name": "Cartão Nubank",
+          "value": 1200
+        },
+        {
+          "id": 2,
+          "name": "Pagamento X",
+          "value": 500
+        },
+        {
+          "id": 3,
+          "name": "Pagamento Y",
+          "value": 200
+        },
+        {
+          "id": 4,
+          "name": "Pagamento Z",
+          "value": 900
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "name": "Dezembro",
       "avaliableMoney": 0,
       "totalEarnings": 0,
       "totalBills": 0,

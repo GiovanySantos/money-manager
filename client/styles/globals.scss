@@ -1,4 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap");
+$base-color: #ffffff;
+$background-color: #242424;
+$hover-color: #5c7c89;
+$modal-background-color: #1f4959;
+$darker-blue-color: #011425;
+$border-dark: rgba($base-color, 0.88);
 
 html,
 body {
@@ -22,16 +28,26 @@ a {
   background-color: transparent;
 }
 
+input[type="number"] {
+  -moz-appearance: textfield; //*for firefox
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
 ::-webkit-scrollbar {
   width: 5px;
-  background: #242424;
+  background: $background-color;
 }
 ::-webkit-scrollbar-track {
   border-radius: 10px;
   margin: 50px;
 }
 ::-webkit-scrollbar-thumb {
-  background: #5c7c89;
+  background: $hover-color;
   border-radius: 10px;
 }
 

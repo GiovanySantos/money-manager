@@ -47,7 +47,7 @@ const ProfileModal: React.FC = () => {
     <>
       <SContainer>
         <Row className='pb-5 text-center'>
-          <TitleContent Content={userProfile.name} />
+          <TitleContent content={userProfile.name} />
         </Row>
         <Row className='pb-5'>
           <Col className='d-flex justify-content-center'>
