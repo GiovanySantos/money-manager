@@ -2,8 +2,9 @@ import { Button, TextField } from "@mui/material";
 import React, { useContext, useEffect, useState } from "react";
 import { Form } from "react-bootstrap";
 import styled from "styled-components";
-import { Bill } from "../../interfaces/interfaces";
+import { Bill, Month } from "../../interfaces/interfaces";
 import { ProfileContext } from "../../pages";
+import { getCurrentMonth } from "../../utils/functions";
 
 const SButton = styled(Button)`
   background: #5c7c89;
@@ -25,26 +26,43 @@ const NewBill: React.FC<IProps> = ({ monthId }) => {
   const [name, setName] = useState<string>("");
   const [value, setValue] = useState<string>("");
 
+  const clearStates = () => {
+    setName("");
+    setValue("");
+  };
+
+  const recalculateTotalBills = (currentMonth: Month) => {
+    return currentMonth?.bills.reduce((accumulator, bill) => {
+      return accumulator + bill.value;
+    }, 0);
+  };
+
   const handleAddBill = (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
     event?.preventDefault();
     if (name && value && userProfile?.months) {
       const currentMonthsArray = Array.from(userProfile.months || []);
-      const currentMonth = { ...userProfile.months[monthId - 1] };
-      const generateBillId = currentMonth.bills.length - 1;
-      const newBill: Bill = {
-        id: generateBillId,
-        name,
-        value: parseInt(value),
-      };
-      currentMonth.bills.push(newBill);
-      currentMonthsArray[currentMonth.id - 1] = currentMonth;
+      const currentMonth = getCurrentMonth?.(userProfile, monthId);
+      if (currentMonth && currentMonthsArray.length > 0) {
+        const newBill: Bill = {
+          id: currentMonth.bills.length - 1,
+          name,
+          value: parseInt(value),
+        };
+        currentMonth.bills.push(newBill);
+        currentMonth.totalBills = Number(recalculateTotalBills(currentMonth));
+        //ToDo
+        //*recalculateTotalEarns(userProfile)
+        // currentMonth.totalEarnings = Number(recalculateTotalEarns(userProfile));
+        currentMonthsArray[currentMonth.id - 1] = currentMonth;
 
-      setUserProfile?.((oldValue) => ({
-        ...oldValue,
-        months: currentMonthsArray,
-      }));
+        setUserProfile?.((oldValue) => ({
+          ...oldValue,
+          months: currentMonthsArray,
+        }));
+        clearStates();
+      }
     } else {
       alert("Preencha o nome e um valor maior que 0");
     }

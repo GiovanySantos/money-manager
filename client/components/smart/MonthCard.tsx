@@ -3,6 +3,7 @@ import { Col, Container, Row } from "react-bootstrap";
 import styled from "styled-components";
 import { Month } from "../../interfaces/interfaces";
 import { ProfileContext } from "../../pages";
+import { getCurrentMonth } from "../../utils/functions";
 import BillComponent from "../dump/Bills";
 import TitleContent from "../dump/TitleContent";
 import Values from "../dump/Values";
@@ -25,21 +26,22 @@ const SContainer = styled(Container)`
 
 const MonthCard: React.FC<IProps> = ({ monthId }) => {
   const { userProfile } = useContext(ProfileContext);
-  const [avaliableMoney, setAvaliableMoney] = useState<number>(0);
-  const [totalEarnings, setTotalEarnings] = useState<number>(0);
-  const [totalBills, setTotalBills] = useState<number>(0);
-
-  const getCurrentMonth = () => userProfile?.months?.[monthId - 1];
 
   return (
     <SContainer>
       <Row className='d-flex justify-content-between mb-5'>
-        <TitleContent content={getCurrentMonth()?.name} />
+        <TitleContent content={getCurrentMonth(userProfile, monthId)?.name} />
       </Row>
       <Values
-        avaliableMoney={avaliableMoney}
-        totalEarnings={totalEarnings}
-        totalBills={totalBills}
+        avaliableMoney={
+          Number(getCurrentMonth(userProfile, monthId)?.avaliableMoney) ?? 0
+        }
+        totalEarnings={
+          Number(getCurrentMonth(userProfile, monthId)?.totalEarnings) ?? 0
+        }
+        totalBills={
+          Number(getCurrentMonth(userProfile, monthId)?.totalBills) ?? 0
+        }
       />
       <Row>
         <Col className='d-flex justify-content-between mt-3 mb-3'>
@@ -47,7 +49,7 @@ const MonthCard: React.FC<IProps> = ({ monthId }) => {
           <TitleContent content='Valor' />
         </Col>
       </Row>
-      {getCurrentMonth()?.bills?.map((bill, i) => {
+      {getCurrentMonth(userProfile, monthId)?.bills?.map((bill, i) => {
         return (
           <Row key={i}>
             <BillComponent bill={bill} />

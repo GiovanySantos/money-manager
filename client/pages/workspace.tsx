@@ -70,11 +70,7 @@ const Workspace: NextPage = () => {
             slidesPerView={monthsPerView}
             spaceBetween={100}
             freeMode={true}
-            pagination={{
-              clickable: true,
-            }}
-            modules={[FreeMode, Pagination]}
-            className='mySwiper'>
+            modules={[FreeMode, Pagination]}>
             {userProfile?.months?.map((month: Month, i: number) => {
               return (
                 <SwiperSlide key={i}>
