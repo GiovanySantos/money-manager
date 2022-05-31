@@ -5,12 +5,11 @@ import { useContext, useEffect, useState } from "react";
 import { Container, Modal, Row } from "react-bootstrap";
 import Slider, { Settings } from "react-slick";
 import styled from "styled-components";
+import { ProfileContext } from ".";
 import Header from "../components/smart/Header";
 import MonthCard from "../components/smart/MonthCard";
 import ProfileModal from "../components/smart/ProfileModal";
-import { ProfileContext } from "../contexts/ProfileContext";
 import { Month } from "../interfaces/interfaces";
-import user from "./testUser.json";
 
 // import { GetServerSideProps } from "next";
 // interface Props {
@@ -25,7 +24,9 @@ const Workspace: NextPage = () => {
   const [monthsQuantity, setMonthsQuantity] = useState<number>(3);
   const [showModalComponent, setShowModalComponent] = useState<boolean>(false);
   const [modalNumber, setModalNumber] = useState<number>(0);
-  const { userProfile, setUserProfile } = useContext(ProfileContext);
+  
+  
+  const { userProfile } = useContext(ProfileContext);
 
   const sliderSettings: Settings = {
     initialSlide: parseInt(format(new Date(), "M")) - 1,
@@ -37,7 +38,6 @@ const Workspace: NextPage = () => {
     accessibility: true,
     centerMode: true,
     draggable: true,
-    adaptiveHeight: true,
     responsive: [
       {
         breakpoint: 1590,
@@ -73,11 +73,6 @@ const Workspace: NextPage = () => {
     openModelComponent();
   };
 
-  useEffect(() => {
-    //? Substituir pela chamada de API
-    setUserProfile(user);
-  }, [setUserProfile]);
-
   return (
     <Home>
       <Head>
@@ -98,17 +93,11 @@ const Workspace: NextPage = () => {
             decraseMonthsQuantity={decraseMonthsQuantity}
           />
           <Slider {...sliderSettings}>
-            {userProfile &&
-              userProfile.months.map((month: Month) => {
-                return (
-                  <div key={month.id}>
-                    <MonthCard MonthInfo={month} />
-                  </div>
-                );
-              })}
+            {userProfile?.months?.map((month: Month, i) => {
+              return <MonthCard key={i} monthId={month.id} />;
+            })}
           </Slider>
         </Row>
-        <footer>Powered by Torradinha</footer>
       </Container>
     </Home>
   );
