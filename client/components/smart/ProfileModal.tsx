@@ -2,8 +2,8 @@ import { Button } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import React, { useContext, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
-import { ProfileContext } from "../../contexts/ProfileContext";
 import styled from "styled-components";
+import { ProfileContext } from "../../pages";
 import TitleContent from "../dump/TitleContent";
 
 const SContainer = styled(Container)`
@@ -26,10 +26,10 @@ const SButton = styled(Button)`
 const ProfileModal: React.FC = () => {
   const { userProfile } = useContext(ProfileContext);
 
-  const [email, setEmail] = useState<string>(userProfile.email);
+  const [email, setEmail] = useState<string>("");
   const [isEmailDisabled, setIsEmailDisabled] = useState<boolean>(true);
 
-  const [password, setPassword] = useState<string>(userProfile.password);
+  const [password, setPassword] = useState<string>("");
   const [maskedPassword, setMaskedPassword] = useState<string>(
     "*".repeat(password.length)
   );
@@ -47,7 +47,7 @@ const ProfileModal: React.FC = () => {
     <>
       <SContainer>
         <Row className='pb-5 text-center'>
-          <TitleContent content={userProfile.name} />
+          <TitleContent content={userProfile?.name} />
         </Row>
         <Row className='pb-5'>
           <Col className='d-flex justify-content-center'>

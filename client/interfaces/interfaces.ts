@@ -27,9 +27,9 @@ export interface Month {
 }
 
 export interface Profile {
-  name: string;
-  email: string;
-  password: string;
-  myWallet: Wallet;
-  months: Month[];
+  name?: string;
+  email?: string;
+  password?: string;
+  myWallet?: Wallet;
+  months?: Month[];
 }
