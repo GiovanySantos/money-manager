@@ -1,12 +1,11 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import styled from "styled-components";
-import { Month } from "../../interfaces/interfaces";
-import { ProfileContext } from "../../pages";
-import { getCurrentMonth } from "../../utils/functions";
-import BillComponent from "../dump/Bills";
-import TitleContent from "../dump/TitleContent";
-import Values from "../dump/Values";
+import { ProfileContext } from "../pages";
+import { getCurrentMonth } from "../utils/functions";
+import BillComponent from "./Bills";
+import TitleContent from "./TitleContent";
+import MonthCardHeader from "./MonthCardHeader";
 import NewBill from "./NewBill";
 
 interface IProps {
@@ -32,7 +31,7 @@ const MonthCard: React.FC<IProps> = ({ monthId }) => {
       <Row className='d-flex justify-content-between mb-5'>
         <TitleContent content={getCurrentMonth(userProfile, monthId)?.name} />
       </Row>
-      <Values
+      <MonthCardHeader
         avaliableMoney={
           Number(getCurrentMonth(userProfile, monthId)?.avaliableMoney) ?? 0
         }

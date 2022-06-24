@@ -1,6 +1,6 @@
 import React from "react";
 import { Col, Row } from "react-bootstrap";
-import Content from "../dump/Content";
+import Content from "./Content";
 
 interface IProps {
   avaliableMoney: number;
@@ -8,7 +8,7 @@ interface IProps {
   totalBills: number;
 }
 
-const Values: React.FC<IProps> = ({
+const MonthCardHeader: React.FC<IProps> = ({
   avaliableMoney,
   totalEarnings,
   totalBills,
@@ -37,4 +37,4 @@ const Values: React.FC<IProps> = ({
   );
 };
 
-export default Values;
+export default MonthCardHeader;

@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import { createContext, useContext, useState } from "react";
 import { Profile } from "../interfaces/interfaces";
-import Workspace from "./workspace";
+import Workspace from "./_workspace";
 
 type ProfileContextType = {
   userProfile: Profile;
@@ -12,14 +12,22 @@ const INITIAL_STATE = {
   name: "Torrada",
   email: "little@toast.com",
   password: "torradinha",
-  myWallet: {
-    totalEarnings: 0,
+  wallet: {
+    totalMoney: 0,
     earnings: [
       {
         id: 1,
         name: "Salário",
         value: 0,
-        recurrency: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+        includedMonthsIds: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+      },
+    ],
+    recurrentBills: [
+      {
+        id: 101,
+        name: "Aluguel",
+        value: 1300,
+        includedMonthsIds: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
       },
     ],
   },
@@ -32,7 +40,7 @@ const INITIAL_STATE = {
       totalBills: 0,
       bills: [
         {
-          id: 1,
+          id: 201,
           name: "Example",
           value: 1200,
         },

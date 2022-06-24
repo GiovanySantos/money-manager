@@ -1,6 +1,6 @@
 import React from "react";
 import { Col } from "react-bootstrap";
-import { Bill } from "../../interfaces/interfaces";
+import { Bill } from "../interfaces/interfaces";
 import Content from "./Content";
 
 interface IProps {

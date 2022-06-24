@@ -1,15 +1,15 @@
 import { Button, TextField } from "@mui/material";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { Form } from "react-bootstrap";
 import styled from "styled-components";
-import { Bill, Month } from "../../interfaces/interfaces";
-import { ProfileContext } from "../../pages";
-import { getCurrentMonth } from "../../utils/functions";
+import { Bill, Month } from "../interfaces/interfaces";
+import { ProfileContext } from "../pages";
+import { BRLCurrencyMask, getCurrentMonth } from "../utils/functions";
 
 const SButton = styled(Button)`
   background: #5c7c89;
   color: #fafafa;
-  margin-left: 30px;
+  padding: 15px 30px;
   &:hover {
     color: #5c7c89;
     background: #f3f3f3;
@@ -25,6 +25,15 @@ const NewBill: React.FC<IProps> = ({ monthId }) => {
 
   const [name, setName] = useState<string>("");
   const [value, setValue] = useState<string>("");
+  const [maskedValue, setMaskedValue] = useState<string>(() =>
+    BRLCurrencyMask(value)
+  );
+
+  const updateValue = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const pureValue = event.target.value;
+    setValue(pureValue);
+    setMaskedValue(BRLCurrencyMask(pureValue));
+  };
 
   const clearStates = () => {
     setName("");
@@ -70,7 +79,7 @@ const NewBill: React.FC<IProps> = ({ monthId }) => {
 
   return (
     <Form>
-      <div className='d-flex align-items-center'>
+      <div className='d-flex justify-content-around align-items-center align-content-center text-center'>
         <div className='d-flex'>
           <TextField
             className='me-3'
@@ -85,16 +94,13 @@ const NewBill: React.FC<IProps> = ({ monthId }) => {
             id='outlined-basic'
             label='Valor'
             variant='outlined'
-            value={value}
-            onChange={(e) => setValue(e.target.value)}
+            value={maskedValue}
+            onChange={updateValue}
             type='number'
           />
         </div>
         <div className='d-flex'>
-          <SButton
-            variant='contained'
-            type='submit'
-            onClick={(e) => handleAddBill?.(e)}>
+          <SButton variant='contained' type='submit' onClick={handleAddBill}>
             Add
           </SButton>
         </div>
