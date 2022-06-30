@@ -28,14 +28,18 @@ a {
   background-color: transparent;
 }
 
+.swiper-3d .swiper-slide-shadow {
+  background: transparent;
+}
+
 input[type="number"] {
   -moz-appearance: textfield; //*for firefox
 }
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 ::-webkit-scrollbar {

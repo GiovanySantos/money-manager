@@ -38,6 +38,7 @@ const NewBill: React.FC<IProps> = ({ monthId }) => {
   const clearStates = () => {
     setName("");
     setValue("");
+    setMaskedValue("");
   };
 
   const recalculateTotalBills = (currentMonth: Month) => {

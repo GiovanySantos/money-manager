@@ -13,7 +13,7 @@ const CurrentDate = styled.h3`
   cursor: pointer;
   border: none;
   border-radius: 10px;
-  background: #5c7c89;
+  background: #1f4959;
   font-weight: bold;
   padding: 5px 10px;
   margin: 5px 10px;
@@ -22,20 +22,9 @@ const CurrentDate = styled.h3`
 interface IProps {
   userName?: string;
   selectModal: (param: number) => void;
-  incraseMonthsQuantity: () => void;
-  decraseMonthsQuantity: () => void;
-  incraseSpaceBetweenCards?: () => void;
-  decraseSpaceBetweenCards?: () => void;
 }
 
-const Header: React.FC<IProps> = ({
-  userName,
-  selectModal,
-  incraseMonthsQuantity,
-  decraseMonthsQuantity,
-  // incraseSpaceBetweenCards,
-  // decraseSpaceBetweenCards,
-}) => {
+const Header: React.FC<IProps> = ({ userName, selectModal }) => {
   const [currentDate] = useState<string>(format(new Date(), "dd/MM/yyyy"));
 
   return (
@@ -59,24 +48,9 @@ const Header: React.FC<IProps> = ({
           </div>
           <div className='d-flex justify-content-start align-items-center'>
             <div className='ms-3 me-2'>
-              <Content content='Adicionar ou remover espaço entre os meses' />
-            </div>
-            <div onClick={decraseMonthsQuantity}>
-              <Option Icon={AddCircleIcon} />
-            </div>
-            <div onClick={incraseMonthsQuantity}>
-              <Option Icon={RemoveCircleIcon} />
+              <Option OptionText='Editar homepage' />
             </div>
           </div>
-          {/* <div className='ms-3 me-2'>
-            <Content content='Adicionar ou remover espaço entre os mêses' />
-          </div>
-          <div onClick={incraseSpaceBetweenCards}>
-            <Option Icon={AddCircleIcon} />
-          </div>
-          <div onClick={decraseSpaceBetweenCards}>
-            <Option Icon={RemoveCircleIcon} />
-          </div> */}
         </Col>
         <Col lg={3} md={6} sm={12}>
           <div className='text-center'>

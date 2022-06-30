@@ -13,12 +13,14 @@ interface IProps {
 }
 
 const SContainer = styled(Container)`
+  border: solid 1px #242424;
   border-radius: 10px;
   background: #1f4959;
   color: #fafafa;
   padding: 30px;
   text-align: center;
   max-width: 405px;
+  min-height: 550px;
   margin-top: 30px;
   margin-bottom: 40px;
 `;
